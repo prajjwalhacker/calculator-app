@@ -8,15 +8,14 @@ const DynamicContainerCurve = ({ endCoordinate, startCoordinate }) => {
   const [path, setPath] = useState("");
 
   useEffect(() => {
-    // Determine the bounding box size and position
-    const left = Math.min(start.x, end.x) - 10; // Add padding
+
+    const left = Math.min(start.x, end.x) - 10;
     const top = Math.min(start.y, end.y) - 10;
-    const width = Math.abs(end.x - start.x) + 20; // Add padding
+    const width = Math.abs(end.x - start.x) + 20;
     const height = Math.abs(end.y - start.y) + 20;
 
     setContainerSize({ width, height, left, top });
 
-    // Recalculate path based on new dimensions
     const relativeStart = { x: start.x - left, y: start.y - top };
     const relativeEnd = { x: end.x - left, y: end.y - top };
     const controlPoint1 = { x: relativeStart.x + (relativeEnd.x - relativeStart.x) / 2, y: relativeStart.y };
@@ -33,7 +32,6 @@ const DynamicContainerCurve = ({ endCoordinate, startCoordinate }) => {
 
   return (
     <div>
-      {/* Transparent and borderless container */}
       <div
         style={{
           position: "absolute",
@@ -41,7 +39,7 @@ const DynamicContainerCurve = ({ endCoordinate, startCoordinate }) => {
           top: containerSize.top,
           width: containerSize.width,
           height: containerSize.height,
-          pointerEvents: "none", // Ensures the container doesn't block clicks
+          pointerEvents: "none",
         }}
       >
         <svg
@@ -51,10 +49,10 @@ const DynamicContainerCurve = ({ endCoordinate, startCoordinate }) => {
             position: "absolute",
             top: 0,
             left: 0,
-            pointerEvents: "none", // Ensures the SVG is purely visual
+            pointerEvents: "none",
           }}
         >
-          <path d={path} fill="none" stroke="#0066FF" stroke-opacity="0.31" stroke-width="7" stroke-linecap="round"/>
+          <path d={path} fill="none" stroke="#0066FF" strokeOpacity="0.31" strokeWidth="7" strokeLinecap="round"/>
         </svg>
       </div>
 

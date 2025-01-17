@@ -1,13 +1,53 @@
 import './function.css';
 import dragAndDrag from '../../../src/assets/images/drag-and-drop.svg';
 import Circle from '../Circle/Circle';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Select from "react-select";
 
 const Function = ({ functionObj, setFunctionArr }) => {
 
 
   const inputCircleRef = useRef<any>(null);
   const outputCircleRef = useRef<any>(null);
+  const [error, setError] = useState('');
+
+  const validOperatorsRegex = /^[0-9x\s+\-*/^()]*$/;
+
+  const validateEquation = (eq) => {
+    if (!validOperatorsRegex.test(eq)) {
+      setError("Invalid equation! Only allowed operators are: *, ^, /, +, -");
+      return false;
+    }
+    setError("");
+    return true;
+  };
+
+  console.log(error);
+
+
+  const onChangeEquation = (value) => {
+       setFunctionArr((prev) => {
+           const newFunctionArr = [...prev];
+           const id = functionObj.id;
+           const index = newFunctionArr.findIndex((item) => item.id === id);
+           newFunctionArr[index].equation = value;
+           return newFunctionArr;
+       })
+  }
+
+
+  useEffect(() => {
+      validateEquation(functionObj.equation);
+  },[functionObj.equation]);
+
+  const options = [
+    { value: 1, label: "Function 1" },
+    { value: 2, label: "Function 2" },
+    { value: 3, label: "Function 3" },
+    { value: 4, label: "Function 4" },
+    { value: 5, label: "Function 5" },
+  ];
+
 
   useEffect(() => {
       if (inputCircleRef.current) {
@@ -37,7 +77,11 @@ const Function = ({ functionObj, setFunctionArr }) => {
        })
       }
   }, []);
-  
+
+  console.log("error");
+  console.log(error);
+
+
   return (
     <div className="function-container">
         <div className='function-header'>
@@ -50,14 +94,22 @@ const Function = ({ functionObj, setFunctionArr }) => {
            <div className='form-group'>
              <label htmlFor="equation" className="form-label">Equation</label>   
              <div className='form-input'>
-                <input />  
+                <input value={functionObj.equation || ''} onChange={(e) => {
+                    onChangeEquation(e.target.value);
+                }}/>
              </div>
+             {!!error?.length && <div className='error-state'>{error}</div>} 
            </div>
            <div className='form-group'>
              <label htmlFor="next-function" className="form-label">Next function</label>   
-             <div className='form-input'>
-                <input />  
-             </div>
+                <Select options={options} 
+                className="next-function-select"
+                components={{
+                  IndicatorSeparator: () => null
+                }}
+                value={{ label: `Function ${functionObj.nextFunctionIndex}`, value: functionObj.nextFunctionIndex }}
+                isDisabled={true}
+                /> 
            </div>
         </div>  
         <div className='function-footer'>

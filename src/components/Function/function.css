@@ -4,7 +4,6 @@
     padding-block: 15px 18px;
     padding-inline: 20px;
     width: 15.5%;
-    min-width: 235px;
     margin-bottom: 107px;
     height: 251px;
 }
@@ -79,3 +78,8 @@
     color: #585757;
 }
 
+
+.error-state {
+    font-size: 10px;
+    color: red;
+}

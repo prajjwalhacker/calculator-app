@@ -2,7 +2,7 @@ import './input.css';
 import Circle from '../Circle/Circle';
 import { useEffect, useRef } from 'react';
 
-const Input = ({ setInputPosition }) => {
+const Input = ({ setInputPosition, inputValue, setInputValue }) => {
   const ref = useRef<any>({});
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Input = ({ setInputPosition }) => {
 
   return (
     <div className='input-container'>
-      <input className='inner-input-main'/>
+      <input className='inner-input-main' value={inputValue} onChange={(e)=>{ setInputValue(e.target.value); }}/>
       <Circle ref={ref}/>  
     </div>
   )
