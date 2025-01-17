@@ -1,19 +1,18 @@
-.input-container {
+.output-container {
     position: absolute;
+    bottom: 40px;
+    right: 100px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    top: 320px;
-    left: 20px;
     gap: 4px;
-    border: 2px solid #FFC267;
+    border: 2px solid #2DD179;
     border-radius: 15px;
     padding: 14px 20px;
     background-color: #ffffff;
     width: 115px;
 }
 
-.input-container .inner-input-main {
+.output-container .inner-output-main {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 18px;

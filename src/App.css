@@ -2,3 +2,13 @@
   width: 100%;
   background-color: #ffffff;
 }
+
+
+.main-container { 
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 8%;
+   padding-inline: 8%;
+   padding-block: 10%;
+}
