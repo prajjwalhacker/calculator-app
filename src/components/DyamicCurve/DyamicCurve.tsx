@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const DynamicContainerCurve = () => {
+const DynamicContainerCurve = ({ endCoordinate, startCoordinate }) => {
   // Start and end points
   const [start, setStart] = useState({ x: 50, y: 50 });
   const [end, setEnd] = useState({ x: 300, y: 300 });
@@ -10,7 +10,7 @@ const DynamicContainerCurve = () => {
   useEffect(() => {
     // Determine the bounding box size and position
     const left = Math.min(start.x, end.x) - 10; // Add padding
-    const top = Math.min(  start.y, end.y) - 10;
+    const top = Math.min(start.y, end.y) - 10;
     const width = Math.abs(end.x - start.x) + 20; // Add padding
     const height = Math.abs(end.y - start.y) + 20;
 
@@ -26,7 +26,24 @@ const DynamicContainerCurve = () => {
     setPath(newPath);
   }, [start, end]);
 
+  useEffect(() => {
+      setEnd(endCoordinate);
+      setStart(startCoordinate);
+  }, [JSON.stringify(endCoordinate), JSON.stringify(startCoordinate)]);
+
   return (
+    <div>
+      {/* Transparent and borderless container */}
+      <div
+        style={{
+          position: "absolute",
+          left: containerSize.left,
+          top: containerSize.top,
+          width: containerSize.width,
+          height: containerSize.height,
+          pointerEvents: "none", // Ensures the container doesn't block clicks
+        }}
+      >
         <svg
           width={containerSize.width}
           height={containerSize.height}
@@ -37,8 +54,11 @@ const DynamicContainerCurve = () => {
             pointerEvents: "none", // Ensures the SVG is purely visual
           }}
         >
-          <path d={path} stroke="#0066FF" strokeWidth="3" fill="none" />
+          <path d={path} fill="none" stroke="#0066FF" stroke-opacity="0.31" stroke-width="7" stroke-linecap="round"/>
         </svg>
+      </div>
+
+    </div>
   );
 };
 

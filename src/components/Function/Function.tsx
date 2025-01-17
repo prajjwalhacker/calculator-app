@@ -3,16 +3,38 @@ import dragAndDrag from '../../../src/assets/images/drag-and-drop.svg';
 import Circle from '../Circle/Circle';
 import { useEffect, useRef } from 'react';
 
-const Function = () => {
+const Function = ({ functionObj, setFunctionArr }) => {
 
 
   const inputCircleRef = useRef<any>(null);
-  const outputCircleRef = useRef(null);
+  const outputCircleRef = useRef<any>(null);
 
   useEffect(() => {
       if (inputCircleRef.current) {
         const rect = inputCircleRef.current.getBoundingClientRect();
+
+        console.log("rect");
+        console.log(rect);
+        const index = functionObj.id;
+        setFunctionArr((prev: any) => {
+           const newFunctionArr = [...prev];
+           const reqIndex = newFunctionArr.findIndex((item) => item.id === index);
+           newFunctionArr[reqIndex].inputPosition.x = rect.x;
+           newFunctionArr[reqIndex].inputPosition.y = rect.y;
+           return newFunctionArr;
+        })
+      }
+      if (outputCircleRef.current) {
+        const rect = outputCircleRef.current.getBoundingClientRect();
         console.log("Circle Position from Wrapper:", rect);
+        const index = functionObj.id;
+        setFunctionArr((prev: any) => {
+          const newFunctionArr = [...prev];
+          const reqIndex = newFunctionArr.findIndex((item) => item.id === index);
+          newFunctionArr[reqIndex].outputPosition.x = rect.x;
+          newFunctionArr[reqIndex].outputPosition.y = rect.y;
+          return newFunctionArr;
+       })
       }
   }, []);
   
