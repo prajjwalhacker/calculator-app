@@ -1,12 +1,18 @@
-import { useState } from 'react'
 import './App.css'
+import DynamicContainerCurve from './components/DyamicCurve/DynamicCurve'
+import Function from './components/Function/Function'
+import Input from './components/Input/Input'
 
 function App() {
-  const [count, setCount] = useState(0)
+   
 
   return (
     <>
-      
+      <Input/> 
+      <DynamicContainerCurve/>
+      <Function/>  
+      <Function/> 
+      <Function/> 
     </>
   )
 }

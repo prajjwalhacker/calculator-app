@@ -1,0 +1,79 @@
+.function-container {
+    border: 1px solid #DFDFDF;
+    border-radius: 15px;
+    padding-block: 15px 18px;
+    padding-inline: 20px;
+    width: 15.5%;
+    height: 251px;
+}
+
+.function-container .function-header {
+    display: flex;
+    gap: 7px;
+}
+
+.function-container .function-header .function-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: #A5A5A5;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    margin-top: 20px;
+}
+
+.form-container .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group .form-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14.52px;
+    color: #252525;
+}
+
+.form-group .form-input {
+    border: 1px solid #D3D3D3;
+    border-radius: 8px;
+    padding-block: 9px;
+    padding-inline: 11px;
+}
+
+.form-input input {
+    outline: unset;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14.52px;
+    color: #252525;
+}
+
+.function-footer {
+    margin-top: 45px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.function-footer .function-footer-item {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12.1px;
+    color: #585757;
+}
+

@@ -1,0 +1,23 @@
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 2px solid #FFC267;
+    border-radius: 15px;
+    padding: 14px 20px;
+    background-color: #ffffff;
+    width: 115px;
+}
+
+.input-container .inner-input-main {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21.78px;
+    width: 100%;
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+    outline: unset;
+}
+
